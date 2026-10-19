@@ -1,0 +1,104 @@
+
+body {
+    margin: 0;
+    font-family: Arial;
+    color: #18324a;
+    background-color: #F8D7DA;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.registration-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.registration-box {
+    width: 560px;
+    padding: 10px 20px;
+}
+
+.registration-box h1 {
+    text-align: center;
+    color: #b22222;
+}
+
+.registration-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.registration-row label {
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.registration-row input[type="text"],
+.registration-row input[type="password"] {
+    width: 280px;
+    padding: 8px;
+}
+
+.gender-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.registration-row textarea {
+    padding: 5px;
+}
+
+.registration-button {
+    margin-top: 15px;
+    margin-left: 190px;
+}
+
+.action-button {
+    display: inline-block;
+    background-color: #c62828;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #f5caca;
+    color: #8b0000;
+}
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 65vh;
+}
+
+.message-box {
+    text-align: center;
+    padding: 30px;
+}
+
+.message-box h1 {
+    color: #b22222;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background-color: #a51c30;
+}
+
+.site-footer:hover {
+    background-color: #f5caca;
+    color: #8b0000;
+}
