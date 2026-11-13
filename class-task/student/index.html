@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student Performance Management System - grade calculator and class dashboard">
+  <title>Student Performance Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+        </div>
+        <div>
+          <h1>Student Performance Management System</h1>
+          <p>Grade calculator and class performance dashboard</p>
+        </div>
+      </div>
+      <div class="theme-switcher" role="group" aria-label="Interface colour">
+        <span>Theme</span>
+        <button type="button" class="theme-btn theme-green" data-theme-value="green" aria-pressed="true">Green</button>
+        <button type="button" class="theme-btn theme-blue" data-theme-value="blue" aria-pressed="false">Blue</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <div class="main-column">
+
+      <section class="stats" aria-label="Performance summary">
+        <article class="stat">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <div><span>Total Students</span><strong id="total-students">0</strong></div>
+        </article>
+        <article class="stat">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+          <div><span>Class Average</span><strong id="class-average">0%</strong></div>
+        </article>
+        <article class="stat">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
+          <div><span>Top Performer</span><strong id="top-student">-</strong></div>
+        </article>
+        <article class="stat">
+          <div class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m22 4-10 10-3-3"/></svg></div>
+          <div><span>Passed / Failed</span><strong id="pass-fail">0 / 0</strong></div>
+        </article>
+      </section>
+
+      <section class="card" aria-labelledby="form-title">
+        <div class="card-head">
+          <div>
+            <h2 id="form-title">Student Registration</h2>
+            <p class="card-sub">Enter student details and marks out of 100 per subject.</p>
+          </div>
+        </div>
+        <form id="student-form" novalidate>
+          <h3 class="form-section">Student details</h3>
+          <div class="grid two">
+            <label>Student Name
+              <input type="text" id="name" placeholder="e.g. Ali Khan" autocomplete="off">
+            </label>
+            <label>Registration Number
+              <input type="text" id="regNo" placeholder="e.g. 2026-CS-001" autocomplete="off">
+            </label>
+          </div>
+
+          <h3 class="form-section">Subject marks <small>(0 - 100)</small></h3>
+          <div class="grid five">
+            <label>Programming <input type="number" id="programming" min="0" max="100" placeholder="0-100"></label>
+            <label>Mathematics <input type="number" id="mathematics" min="0" max="100" placeholder="0-100"></label>
+            <label>English <input type="number" id="english" min="0" max="100" placeholder="0-100"></label>
+            <label>Database <input type="number" id="database" min="0" max="100" placeholder="0-100"></label>
+            <label>Computer Networks <input type="number" id="networks" min="0" max="100" placeholder="0-100"></label>
+          </div>
+
+          <div class="preview" aria-live="polite">
+            <div><span>Total</span><strong id="preview-total">-</strong></div>
+            <div><span>Percentage</span><strong id="preview-percentage">-</strong></div>
+            <div><span>Grade</span><strong id="preview-grade" class="badge muted">-</strong></div>
+            <div><span>Status</span><strong id="preview-status">-</strong></div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary">Add Student</button>
+            <button type="reset" class="btn ghost" id="reset-btn">Reset Form</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="results-title">
+        <div class="card-head">
+          <div>
+            <h2 id="results-title">Student Results</h2>
+            <p class="card-sub" id="results-count">No records yet.</p>
+          </div>
+          <div class="tools">
+            <input type="search" id="search" placeholder="Search by Reg. No." aria-label="Search by registration number">
+            <select id="sort" aria-label="Sort students">
+              <option value="added">Order added</option>
+              <option value="high">Percentage: High to Low</option>
+              <option value="low">Percentage: Low to High</option>
+            </select>
+            <button type="button" id="clear-all" class="btn danger-outline">Clear All</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th><th>Student</th><th>Reg. No.</th><th>Total (/500)</th>
+                <th>Percentage</th><th>Grade</th><th>Status</th><th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <aside class="side-column">
+      <section class="card" aria-labelledby="scale-title">
+        <h2 id="scale-title">Grade Points Guide</h2>
+        <p class="card-sub">How marks convert to grades and points.</p>
+        <table class="scale">
+          <thead><tr><th>Marks %</th><th>Grade</th><th>Remark</th><th>Points</th></tr></thead>
+          <tbody id="grade-scale"></tbody>
+        </table>
+        <p class="note"><strong>Pass rule:</strong> at least 40 marks in every subject. Scoring below 40 in any subject means Fail, whatever the overall percentage.</p>
+      </section>
+
+      <section class="card" aria-labelledby="dist-title">
+        <h2 id="dist-title">Grade Distribution</h2>
+        <p class="card-sub">Number of students per grade.</p>
+        <div id="distribution" class="distribution"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">Student Performance Management System &middot; HTML, CSS and JavaScript</footer>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
