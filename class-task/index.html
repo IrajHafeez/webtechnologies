@@ -1,47 +1,78 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Class Task</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Class Task - Web Technology work of Iraj Hafeez">
+  <title>Class Task | Iraj Hafeez</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #134e4a;
+      --primary-soft: #ccfbf1;
+      --ring: rgba(15, 118, 110, 0.28);
+      --page-bg: #f1f7f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 6px 20px rgba(16, 24, 40, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--page-bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-<body>
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+    .logo { font-weight: 800; color: var(--primary-dark); }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; font-weight: 600; color: #374151; }
+    .nav-links a:hover { color: var(--primary); }
 
-<center>
+    /* ---------- Hero ---------- */
+    .hero {
+      color: #fff;
+      text-align: center;
+      padding: 56px 0 72px;
+      background: linear-gradient(130deg, var(--primary-dark), var(--primary));
+    }
+    .hero .eyebrow { margin: 0; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; opacity: 0.85; }
+    .hero h1 { margin: 6px 0 10px; font-size: clamp(2rem, 5vw, 2.8rem); letter-spacing: 0.5px; }
+    .hero p.sub { max-width: 560px; margin: 0 auto; font-size: 1.05rem; opacity: 0.92; }
 
-<h1>CLASS TASK</h1>
- <table border="1" cellpadding="15">
-    <tr>
-        <td>
-            <a href="bird/bird.html">BIRD</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="introduction/introduction.html">INTRODUCTION</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="form/form.html">FORM</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="form_with _css/newform.html">NEW_FORM</a>
-        </td>
-    </tr>
-      <tr>
-        <td>
-            <a href="color scheme/color.html">Color Scheme</a>
-        </td>
-    </tr>
-      <tr>
-        <td>
-            <a href="student/index.html">Student</a>
-        </td>
-    </tr>
-</table>
+    /* ---------- Content ---------- */
+    main { flex: 1; padding-top: 28px; }
+    .back { display: inline-block; margin-bottom: 8px; font-size: 0.92rem; font-weight: 700; color: var(--primary); }
+    .back:hover { text-decoration: underline; }
 
-</center>
+    .section-title { margin: 14px 0 0; font-size: 1.6rem; color: var(--primary-dark); }
+    .section-line { width: 54px; height: 4px; margin: 8px 0 24px; background: var(--primary); border-radius: 4px; }
 
-</body>
-</html>
+    .task-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      transition: transform
