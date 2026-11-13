@@ -75,4 +75,113 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       box-shadow: var(--shadow);
-      transition: transform
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14); }
+    .card:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+    .num {
+      display: grid; place-items: center;
+      width: 52px; height: 52px;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border-radius: 14px;
+    }
+    .card h3 { margin: 0 0 6px; font-size: 1.15rem; }
+    .card p { flex: 1; margin: 0 0 18px; font-size: 0.93rem; color: var(--muted); }
+    .open { font-weight: 700; color: var(--primary); }
+    .card:hover .open { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    footer { margin-top: 56px; padding: 24px 0; font-size: 0.88rem; text-align: center; color: #cbd5e1; background: #0f2f2c; }
+    footer b { color: #fff; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) { .task-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) {
+      .task-grid { grid-template-columns: 1fr; }
+      .nav-links a:not(.keep) { display: none; }
+      .hero { padding: 44px 0 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="../index.html" class="logo">Iraj Hafeez</a>
+      <div class="nav-links">
+        <a href="../index.html" class="keep">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Web Technology</p>
+      <h1>Class Task</h1>
+      <p class="sub">All the tasks completed in class, from first web pages to forms and a full dashboard.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="../index.html" class="back">&larr; Back to Home</a>
+    <h2 class="section-title">Tasks</h2>
+    <div class="section-line"></div>
+
+    <div class="task-grid">
+      <a href="introduction/introduction.html" class="card">
+        <div class="num">02</div>
+        <h3>Introduction</h3>
+        <p>A web page that introduces me.</p>
+        <span class="open">Open Introduction &rarr;</span>
+      </a>
+       <a href="bird/bird.html" class="card">
+        <div class="num">01</div>
+        <h3>Bird</h3>
+        <p>My bird web page, built with HTML.</p>
+        <span class="open">Open Bird &rarr;</span>
+      </a>
+
+      <a href="form/form.html" class="card">
+        <div class="num">03</div>
+        <h3>Form</h3>
+        <p>An HTML form with different input fields.</p>
+        <span class="open">Open Form &rarr;</span>
+      </a>
+
+      <a href="form_with _css/newform.html" class="card">
+        <div class="num">04</div>
+        <h3>New Form</h3>
+        <p>The same form, now styled with CSS.</p>
+        <span class="open">Open New Form &rarr;</span>
+      </a>
+
+      <a href="color scheme/color.html" class="card">
+        <div class="num">05</div>
+        <h3>Color Scheme</h3>
+        <p>Practising colours and a colour scheme with CSS.</p>
+        <span class="open">Open Color Scheme &rarr;</span>
+      </a>
+
+      <a href="student/index.html" class="card">
+        <div class="num">06</div>
+        <h3>Student</h3>
+        <p>Student Performance Management System: a grade calculator and class dashboard.</p>
+        <span class="open">Open Student &rarr;</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> <b>Iraj Hafeez</b> &middot; Computer Science, Semester 5, Section A &middot; Web Technology</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
