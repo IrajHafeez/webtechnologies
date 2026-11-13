@@ -1,56 +1,232 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Web Technology</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Web Technology work of Iraj Hafeez - Computer Science, Semester 5, Section A">
+  <title>Web Technology | Iraj Hafeez</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #134e4a;
+      --primary-soft: #ccfbf1;
+      --ring: rgba(15, 118, 110, 0.28);
+      --page-bg: #f1f7f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 6px 20px rgba(16, 24, 40, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--page-bg);
+      transition: background 0.35s;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+    .logo { font-weight: 800; color: var(--primary-dark); }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; font-weight: 600; color: #374151; }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      color: #fff;
+      text-align: center;
+      padding: 70px 0 90px;
+      background: linear-gradient(130deg, var(--primary-dark), var(--primary));
+      transition: background 0.35s;
+    }
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 104px; height: 104px;
+      margin: 0 auto 18px;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.16);
+      border: 3px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+    }
+    .hero .eyebrow { margin: 0; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; opacity: 0.85; }
+    .hero h1 { margin: 6px 0 10px; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 0.5px; }
+    .hero p.sub { max-width: 620px; margin: 0 auto 26px; font-size: 1.05rem; opacity: 0.92; }
+    .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .chip {
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 56px 0 8px; }
+    .section-title { margin: 0; font-size: 1.6rem; color: var(--primary-dark); }
+    .section-line { width: 54px; height: 4px; margin: 8px 0 24px; background: var(--primary); border-radius: 4px; transition: background 0.35s; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    /* About */
+    .about-grid { display: block; }
+    .about-text { padding: 28px; }
+    .about-text p { margin: 0 0 14px; color: #374151; }
+    .interest-title { margin: 18px 0 10px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--primary-dark); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 5px 13px; font-size: 0.83rem; font-weight: 600; color: var(--primary-dark); background: var(--primary-soft); border-radius: 16px; transition: background 0.35s; }
+
+
+    /* Work cards */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .work {
+      display: flex;
+      flex-direction: column;
+      padding: 26px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .work:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 12px 28px rgba(16, 24, 40, 0.14); }
+    .work:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+    .work-icon {
+      display: grid; place-items: center;
+      width: 52px; height: 52px;
+      margin-bottom: 16px;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border-radius: 14px;
+      transition: background 0.35s, color 0.35s;
+    }
+    .work h3 { margin: 0 0 6px; font-size: 1.15rem; }
+    .work p { flex: 1; margin: 0 0 18px; font-size: 0.93rem; color: var(--muted); }
+    .open { font-weight: 700; color: var(--primary); }
+    .work:hover .open { text-decoration: underline; }
+
+    /* Footer */
+    footer { margin-top: 56px; padding: 24px 0; font-size: 0.88rem; text-align: center; color: #cbd5e1; background: #0f2f2c; }
+    footer b { color: #fff; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .work-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .nav-links a { display: none; }
+      .hero { padding: 50px 0 64px; }
+    }
+  </style>
+</head>
 <body>
 
-<center>
+  <nav class="nav">
+    <div class="container">
+      <a href="#top" class="logo">Iraj Hafeez</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">My Work</a>
+      </div>
+    </div>
+  </nav>
 
-<h1>WEB TECHNOLOGY</h1>
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="avatar" aria-hidden="true">IH</div>
+      <p class="eyebrow">Web Technology</p>
+      <h1>Iraj Hafeez</h1>
+      <p class="sub">Computer Science student building websites with HTML, CSS and JavaScript.</p>
+      <div class="chips">
+        <span class="chip">Computer Science</span>
+        <span class="chip">Semester 5</span>
+        <span class="chip">Section A</span>
+      </div>
+    </div>
+  </header>
 
-<h3>MY INTRODUCTION</h3>
+  <main class="container">
 
-<table>
-    <tr>
-        <td><b>Name</b></td>
-        <td>Iraj Hafeez</td>
-    </tr>
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+      <div class="about-grid">
+        <div class="card about-text">
+          <p>Hi, I am <strong>Iraj Hafeez</strong>, a Computer Science student in Semester 5, Section A. I like building things that are clean, simple and genuinely useful.</p>
+          <p>Alongside Web Technology, I am exploring Operating Systems, Machine Learning and Cyber Security. My capstone project looks at soft skills in IT careers, because good developers need strong communication as much as strong code.</p>
 
-    <tr>
-        <td><b>Department</b></td>
-        <td>Computer Science</td>
-    </tr>
+          <div class="interest-title">Areas of interest</div>
+          <div class="tags">
+            <span class="tag">Web Development</span>
+            <span class="tag">Operating Systems</span>
+            <span class="tag">Theory of Computation</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Cyber Security</span>
+            <span class="tag">Soft Skills in IT</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <tr>
-        <td><b>Semester</b></td>
-        <td>5</td>
-    </tr>
+    <section id="work">
+      <h2 class="section-title">My Work</h2>
+      <div class="section-line"></div>
+      <div class="work-grid">
 
-    <tr>
-        <td><b>Section</b></td>
-        <td>A</td>
-    </tr>
-</table>
+        <a href="class-task/" class="card work">
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          </div>
+          <h3>Class Task</h3>
+          <p>Student Performance Management System: a grade calculator and class dashboard built with HTML, CSS and JavaScript.</p>
+          <span class="open">Open Class Task &rarr;</span>
+        </a>
 
-<br><br><br><br>
-<table border="1" width="70%" cellpadding="15">
-    <tr>
-        <td>
-            <a href="class-task/">CLASS TASK</a>
-        </td>
+        <a href="home-task/" class="card work">
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </div>
+          <h3>Home Task</h3>
+          <p>Assignments completed at home to practise and strengthen the web development concepts covered in class.</p>
+          <span class="open">Open Home Task &rarr;</span>
+        </a>
 
-        <td>
-            <a href="home-task/">HOME TASK</a>
-        </td>
+        <a href="quiz/" class="card work">
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          </div>
+          <h3>Quiz</h3>
+          <p>Quiz work that tests my understanding of Web Technology topics.</p>
+          <span class="open">Open Quiz &rarr;</span>
+        </a>
 
-        <td>
-            <a href="quiz/">QUIZ</a>
-        </td>
-    </tr>
-</table>
+      </div>
+    </section>
+  </main>
 
-</center>
+  <footer>
+    <div class="container">&copy; <span id="year"></span> <b>Iraj Hafeez</b> &middot; Computer Science, Semester 5, Section A &middot; Web Technology</div>
+  </footer>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
